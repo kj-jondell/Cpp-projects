@@ -1,3 +1,1 @@
-A dual-tone multi-frequency signaling encoder
-
-
+A dual-tone multi-frequency signaling encoder.
