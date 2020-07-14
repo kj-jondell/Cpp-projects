@@ -1,4 +1,0 @@
-/Users/kj/Documents/projects/Cpp-projects/dtmf/build/CMakeFiles/rebuild_cache.dir
-/Users/kj/Documents/projects/Cpp-projects/dtmf/build/CMakeFiles/edit_cache.dir
-/Users/kj/Documents/projects/Cpp-projects/dtmf/build/CMakeFiles/DTMFDecoder.dir
-/Users/kj/Documents/projects/Cpp-projects/dtmf/build/CMakeFiles/playerlib.dir

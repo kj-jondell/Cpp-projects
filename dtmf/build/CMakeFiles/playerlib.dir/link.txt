@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libplayerlib.a  CMakeFiles/playerlib.dir/Player.cpp.o CMakeFiles/playerlib.dir/Decoder.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libplayerlib.a
