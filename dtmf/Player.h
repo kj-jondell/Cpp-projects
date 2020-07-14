@@ -3,24 +3,23 @@
 
 #include "portaudio.h"
 #include <iostream>
-#include <math.h>
 
-#include "pa_mac_core.h"
-
-#define DEVICE_NAME "Soundflower (64ch)"
+#define INPUT_DEVICE_NAME "Soundflower (64ch)"
+#define OUTPUT_DEVICE_NAME "Built-in Output"
 #define IN_CHANNELS 1
 #define OUT_CHANNELS 1
-#define FRAMES_PER_BUFFER 64
-
-#define M_PI (3.14159265)
+#define FRAMES_PER_BUFFER 512
 
 using namespace std;
 
 class Player {
 
 private:
-  int deviceIndex = 0;
+  int inputDeviceIndex = 0, outputDeviceIndex = 1;
   float sampleRate = 48000.f;
+  PaError err;
+  PaStream *stream;
+  PaStreamParameters outputParameters, inputParameters;
 
   static int portAudioCallback(const void *inputBuffer, void *outputBuffer,
                                unsigned long framesPerBuffer,

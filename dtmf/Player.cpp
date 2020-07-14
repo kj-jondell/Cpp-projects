@@ -3,38 +3,31 @@
 Player::Player() {
   Pa_Initialize();
 
-  for (int i = 0; i < Pa_GetDeviceCount(); i++)
-    if (strcmp(Pa_GetDeviceInfo(i)->name, DEVICE_NAME) == 0)
-      deviceIndex = i;
+  for (int i = 0; i < Pa_GetDeviceCount(); i++) {
+    if (strcmp(Pa_GetDeviceInfo(i)->name, INPUT_DEVICE_NAME) == 0)
+      inputDeviceIndex = i;
+    if (strcmp(Pa_GetDeviceInfo(i)->name, OUTPUT_DEVICE_NAME) == 0)
+      outputDeviceIndex = i;
+  }
 
-  PaStream *stream;
-  PaStreamParameters outputParameters;
-  PaStreamParameters inputParameters;
-
-  bzero(&inputParameters, sizeof(inputParameters));
   inputParameters.channelCount = IN_CHANNELS;
-  inputParameters.device = deviceIndex;
-  inputParameters.hostApiSpecificStreamInfo = NULL;
+  inputParameters.device = inputDeviceIndex;
   inputParameters.sampleFormat = paFloat32;
   inputParameters.suggestedLatency =
-      Pa_GetDeviceInfo(deviceIndex)->defaultLowInputLatency;
+      Pa_GetDeviceInfo(inputDeviceIndex)->defaultLowInputLatency;
 
-  bzero(&outputParameters, sizeof(outputParameters));
   outputParameters.channelCount = OUT_CHANNELS;
-  outputParameters.device = deviceIndex;
-  outputParameters.hostApiSpecificStreamInfo = NULL;
+  outputParameters.device = outputDeviceIndex;
   outputParameters.sampleFormat = paFloat32;
   outputParameters.suggestedLatency =
-      Pa_GetDeviceInfo(deviceIndex)->defaultLowOutputLatency;
+      Pa_GetDeviceInfo(outputDeviceIndex)->defaultLowOutputLatency;
 
-  sampleRate = Pa_GetDeviceInfo(deviceIndex)->defaultSampleRate;
-
-  int err = Pa_OpenStream(&stream, &inputParameters, &outputParameters,
-                          sampleRate, FRAMES_PER_BUFFER, paNoFlag,
-                          portAudioCallback, (void *)this);
+  err = Pa_OpenStream(&stream, &inputParameters, &outputParameters, sampleRate,
+                      FRAMES_PER_BUFFER, paNoFlag, portAudioCallback,
+                      (void *)this);
 
   Pa_StartStream(stream);
-  Pa_Sleep(1000);
+  Pa_Sleep(5000);
   Pa_CloseStream(stream);
 }
 
@@ -46,12 +39,12 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
                               PaStreamCallbackFlags statusFlags,
                               void *userData) {
 
-  float *out = (float *)outputBuffer;
+  float *in = (float *)inputBuffer, *out = (float *)outputBuffer, *sine;
   unsigned int i;
   (void)inputBuffer;
 
   for (i = 0; i < framesPerBuffer; i++)
-    out[i] = (float)sin(((double)i / (double)framesPerBuffer) * M_PI * 2.);
+    out[i] = in[i];
 
   return 0;
 }
