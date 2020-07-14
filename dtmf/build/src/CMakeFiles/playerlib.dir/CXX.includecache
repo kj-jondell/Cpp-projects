@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/kj/Documents/projects/Cpp-projects/dtmf/src/Decoder.cpp
+Decoder.h
+/Users/kj/Documents/projects/Cpp-projects/dtmf/src/Decoder.h
+
+/Users/kj/Documents/projects/Cpp-projects/dtmf/src/Decoder.h
+iostream
+-
+
+/Users/kj/Documents/projects/Cpp-projects/dtmf/src/Player.cpp
+Player.h
+/Users/kj/Documents/projects/Cpp-projects/dtmf/src/Player.h
+
+/Users/kj/Documents/projects/Cpp-projects/dtmf/src/Player.h
+iostream
+-
+

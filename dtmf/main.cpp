@@ -6,8 +6,7 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 
-    Decoder *d = new Decoder();
-    Player *p = new Player();
+  Player *p = new Player();
 
-    return 0;
+  return 0;
 }
