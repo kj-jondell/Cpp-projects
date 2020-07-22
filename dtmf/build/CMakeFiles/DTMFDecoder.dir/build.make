@@ -80,6 +80,7 @@ DTMFDecoder_EXTERNAL_OBJECTS =
 DTMFDecoder: CMakeFiles/DTMFDecoder.dir/main.cpp.o
 DTMFDecoder: CMakeFiles/DTMFDecoder.dir/build.make
 DTMFDecoder: libplayerlib.a
+DTMFDecoder: sampler/liblibsampler.a
 DTMFDecoder: CMakeFiles/DTMFDecoder.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable DTMFDecoder"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DTMFDecoder.dir/link.txt --verbose=$(VERBOSE)

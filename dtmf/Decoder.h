@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 
-#define DBM_THRESHOLD 0.000015
+#define DBM_THRESHOLD 0.00002
 #define MAX_LOSS 5
 
 using namespace std;

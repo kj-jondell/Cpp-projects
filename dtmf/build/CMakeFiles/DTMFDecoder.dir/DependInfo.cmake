@@ -10,13 +10,14 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../sampler"
   "../libs/goertzel/include"
-  "../libs/portaudio/include"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles/playerlib.dir/DependInfo.cmake"
+  "/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/sampler/CMakeFiles/libsampler.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

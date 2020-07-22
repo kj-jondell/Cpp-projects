@@ -4,11 +4,12 @@
 #include "Decoder.h"
 #include "portaudio.h"
 // #include "sndfile.hh"
+#include "Sampler.h"
 #include <cstring>
 #include <iostream>
 #include <string>
 
-#define INPUT_DEVICE_NAME "USB Audio Device: - (hw:2,0)"
+#define INPUT_DEVICE_NAME "Scarlett 8i6 USB: Audio (hw:3,0)"
 #define OUTPUT_DEVICE_NAME "Scarlett 8i6 USB: Audio (hw:3,0)"
 #define IN_CHANNELS 1
 #define OUT_CHANNELS 1
@@ -25,6 +26,7 @@ class Player {
     PaStream *stream;
     PaStreamParameters outputParameters, inputParameters;
     Decoder *decoder;
+    Sampler *sampler;
 
     bool debug_;
 

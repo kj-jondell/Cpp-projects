@@ -9,16 +9,19 @@ if(APPLE)
     find_library(CORE_AUDIO CoreAudio)
 endif()
 
+include_directories(sampler)
+add_subdirectory(sampler)
+
 add_library(
     playerlib STATIC
     Player.cpp Player.h Decoder.h Decoder.cpp 
 )
 
+target_link_libraries(playerlib libsampler)
 add_executable(DTMFDecoder main.cpp)
 
 target_include_directories(playerlib PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/libs/goertzel/include") 
 
-target_include_directories(playerlib PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/libs/portaudio/include")
 target_link_libraries(playerlib portaudio)
 
 if(APPLE)

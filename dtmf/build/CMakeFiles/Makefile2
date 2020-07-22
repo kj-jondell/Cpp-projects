@@ -55,25 +55,48 @@ CMAKE_BINARY_DIR = /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/bui
 # The main recursive "all" target.
 all: CMakeFiles/DTMFDecoder.dir/all
 all: CMakeFiles/playerlib.dir/all
+all: sampler/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: sampler/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/DTMFDecoder.dir/clean
 clean: CMakeFiles/playerlib.dir/clean
+clean: sampler/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory sampler
+
+# Recursive "all" directory target.
+sampler/all: sampler/CMakeFiles/Sampler.dir/all
+sampler/all: sampler/CMakeFiles/libsampler.dir/all
+
+.PHONY : sampler/all
+
+# Recursive "preinstall" directory target.
+sampler/preinstall:
+
+.PHONY : sampler/preinstall
+
+# Recursive "clean" directory target.
+sampler/clean: sampler/CMakeFiles/Sampler.dir/clean
+sampler/clean: sampler/CMakeFiles/libsampler.dir/clean
+
+.PHONY : sampler/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/DTMFDecoder.dir
 
 # All Build rule for target.
 CMakeFiles/DTMFDecoder.dir/all: CMakeFiles/playerlib.dir/all
+CMakeFiles/DTMFDecoder.dir/all: sampler/CMakeFiles/libsampler.dir/all
 	$(MAKE) -f CMakeFiles/DTMFDecoder.dir/build.make CMakeFiles/DTMFDecoder.dir/depend
 	$(MAKE) -f CMakeFiles/DTMFDecoder.dir/build.make CMakeFiles/DTMFDecoder.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles --progress-num=1,2 "Built target DTMFDecoder"
@@ -81,7 +104,7 @@ CMakeFiles/DTMFDecoder.dir/all: CMakeFiles/playerlib.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/DTMFDecoder.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/DTMFDecoder.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles 0
 .PHONY : CMakeFiles/DTMFDecoder.dir/rule
@@ -100,15 +123,15 @@ CMakeFiles/DTMFDecoder.dir/clean:
 # Target rules for target CMakeFiles/playerlib.dir
 
 # All Build rule for target.
-CMakeFiles/playerlib.dir/all:
+CMakeFiles/playerlib.dir/all: sampler/CMakeFiles/libsampler.dir/all
 	$(MAKE) -f CMakeFiles/playerlib.dir/build.make CMakeFiles/playerlib.dir/depend
 	$(MAKE) -f CMakeFiles/playerlib.dir/build.make CMakeFiles/playerlib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles --progress-num=3,4,5 "Built target playerlib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles --progress-num=7,8,9 "Built target playerlib"
 .PHONY : CMakeFiles/playerlib.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/playerlib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/playerlib.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles 0
 .PHONY : CMakeFiles/playerlib.dir/rule
@@ -122,6 +145,60 @@ playerlib: CMakeFiles/playerlib.dir/rule
 CMakeFiles/playerlib.dir/clean:
 	$(MAKE) -f CMakeFiles/playerlib.dir/build.make CMakeFiles/playerlib.dir/clean
 .PHONY : CMakeFiles/playerlib.dir/clean
+
+#=============================================================================
+# Target rules for target sampler/CMakeFiles/Sampler.dir
+
+# All Build rule for target.
+sampler/CMakeFiles/Sampler.dir/all: sampler/CMakeFiles/libsampler.dir/all
+	$(MAKE) -f sampler/CMakeFiles/Sampler.dir/build.make sampler/CMakeFiles/Sampler.dir/depend
+	$(MAKE) -f sampler/CMakeFiles/Sampler.dir/build.make sampler/CMakeFiles/Sampler.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles --progress-num=3,4 "Built target Sampler"
+.PHONY : sampler/CMakeFiles/Sampler.dir/all
+
+# Build rule for subdir invocation for target.
+sampler/CMakeFiles/Sampler.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 sampler/CMakeFiles/Sampler.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles 0
+.PHONY : sampler/CMakeFiles/Sampler.dir/rule
+
+# Convenience name for target.
+Sampler: sampler/CMakeFiles/Sampler.dir/rule
+
+.PHONY : Sampler
+
+# clean rule for target.
+sampler/CMakeFiles/Sampler.dir/clean:
+	$(MAKE) -f sampler/CMakeFiles/Sampler.dir/build.make sampler/CMakeFiles/Sampler.dir/clean
+.PHONY : sampler/CMakeFiles/Sampler.dir/clean
+
+#=============================================================================
+# Target rules for target sampler/CMakeFiles/libsampler.dir
+
+# All Build rule for target.
+sampler/CMakeFiles/libsampler.dir/all:
+	$(MAKE) -f sampler/CMakeFiles/libsampler.dir/build.make sampler/CMakeFiles/libsampler.dir/depend
+	$(MAKE) -f sampler/CMakeFiles/libsampler.dir/build.make sampler/CMakeFiles/libsampler.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles --progress-num=5,6 "Built target libsampler"
+.PHONY : sampler/CMakeFiles/libsampler.dir/all
+
+# Build rule for subdir invocation for target.
+sampler/CMakeFiles/libsampler.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 sampler/CMakeFiles/libsampler.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles 0
+.PHONY : sampler/CMakeFiles/libsampler.dir/rule
+
+# Convenience name for target.
+libsampler: sampler/CMakeFiles/libsampler.dir/rule
+
+.PHONY : libsampler
+
+# clean rule for target.
+sampler/CMakeFiles/libsampler.dir/clean:
+	$(MAKE) -f sampler/CMakeFiles/libsampler.dir/build.make sampler/CMakeFiles/libsampler.dir/clean
+.PHONY : sampler/CMakeFiles/libsampler.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

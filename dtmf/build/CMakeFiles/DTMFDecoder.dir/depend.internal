@@ -3,7 +3,7 @@
 
 CMakeFiles/DTMFDecoder.dir/main.cpp.o
  ../libs/goertzel/include/GoertzelFilter.hpp
- ../libs/portaudio/include/portaudio.h
+ ../sampler/Sampler.h
  /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Decoder.h
  /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Player.h
  /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/main.cpp

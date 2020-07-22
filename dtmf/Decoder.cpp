@@ -16,7 +16,7 @@ bool Decoder::isPeak(float freq, float *in, int size) {
 
 /**
  * Returns object of given symbol. TODO implement when checking for falling
- * edges
+ * edges. Maybe use timer?
  */
 ReceivedSymbol *Decoder::getSymbol(char ch) {
     for (auto returnSymbol : symbols)
@@ -31,6 +31,7 @@ int Decoder::getIndexOfSymbol(char ch) {
 }
 
 char Decoder::getCode(float *in, int size) {
+    char returnedChar = NULL;
     for (int x = 0; x < 4; x++)
         for (int y = 0; y < 4; y++) {
             int index = getIndexOfSymbol(DECODE_TABLE[x][y]);
@@ -38,13 +39,16 @@ char Decoder::getCode(float *in, int size) {
             if (isPeak(DTMF_TABLE[0][x], in, size) &&
                 isPeak(DTMF_TABLE[1][y], in, size)) {
                 if (symbols[index].notReceivedCounter >= MAX_LOSS) {
-                    if (debug_)
-                        printf("received: %c\n", symbols[index].symbol);
+                    if (returnedChar == NULL)
+                        returnedChar = symbols[index].symbol;
+                    else
+                        return NULL; // return symbol only if it is unique, else
+                                     // return NULL
                     symbols[index].notReceivedCounter = 0;
                 }
             } else if (symbols[index].notReceivedCounter < MAX_LOSS)
                 symbols[index].notReceivedCounter++;
         }
 
-    return 0;
+    return returnedChar;
 }

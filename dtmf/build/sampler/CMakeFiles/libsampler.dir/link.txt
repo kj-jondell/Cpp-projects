@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblibsampler.a  CMakeFiles/libsampler.dir/Sampler.cpp.o
+/usr/bin/ranlib liblibsampler.a

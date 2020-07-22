@@ -6,5 +6,5 @@ CXX_FLAGS =
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/libs/goertzel/include -I/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/libs/portaudio/include 
+CXX_INCLUDES = -I/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/sampler -I/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/libs/goertzel/include 
 

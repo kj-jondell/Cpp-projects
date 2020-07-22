@@ -6,7 +6,7 @@ CMakeFiles/playerlib.dir/Decoder.cpp.o: ../Decoder.cpp
 CMakeFiles/playerlib.dir/Decoder.cpp.o: ../Decoder.h
 
 CMakeFiles/playerlib.dir/Player.cpp.o: ../libs/goertzel/include/GoertzelFilter.hpp
-CMakeFiles/playerlib.dir/Player.cpp.o: ../libs/portaudio/include/portaudio.h
+CMakeFiles/playerlib.dir/Player.cpp.o: ../sampler/Sampler.h
 CMakeFiles/playerlib.dir/Player.cpp.o: ../Decoder.h
 CMakeFiles/playerlib.dir/Player.cpp.o: ../Player.cpp
 CMakeFiles/playerlib.dir/Player.cpp.o: ../Player.h

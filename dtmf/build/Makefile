@@ -136,6 +136,32 @@ playerlib/fast:
 	$(MAKE) -f CMakeFiles/playerlib.dir/build.make CMakeFiles/playerlib.dir/build
 .PHONY : playerlib/fast
 
+#=============================================================================
+# Target rules for targets named Sampler
+
+# Build rule for target.
+Sampler: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Sampler
+.PHONY : Sampler
+
+# fast build rule for target.
+Sampler/fast:
+	$(MAKE) -f sampler/CMakeFiles/Sampler.dir/build.make sampler/CMakeFiles/Sampler.dir/build
+.PHONY : Sampler/fast
+
+#=============================================================================
+# Target rules for targets named libsampler
+
+# Build rule for target.
+libsampler: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 libsampler
+.PHONY : libsampler
+
+# fast build rule for target.
+libsampler/fast:
+	$(MAKE) -f sampler/CMakeFiles/libsampler.dir/build.make sampler/CMakeFiles/libsampler.dir/build
+.PHONY : libsampler/fast
+
 Decoder.o: Decoder.cpp.o
 
 .PHONY : Decoder.o
@@ -227,6 +253,8 @@ help:
 	@echo "... edit_cache"
 	@echo "... DTMFDecoder"
 	@echo "... playerlib"
+	@echo "... Sampler"
+	@echo "... libsampler"
 	@echo "... Decoder.o"
 	@echo "... Decoder.i"
 	@echo "... Decoder.s"

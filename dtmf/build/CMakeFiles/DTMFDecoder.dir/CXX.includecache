@@ -16,7 +16,19 @@ utility
 cassert
 -
 
-../libs/portaudio/include/portaudio.h
+../sampler/Sampler.h
+portaudio.h
+../sampler/portaudio.h
+sndfile.hh
+../sampler/sndfile.hh
+cstring
+-
+iostream
+-
+stdio.h
+-
+vector
+-
 
 /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Decoder.h
 GoertzelFilter.hpp
@@ -31,6 +43,8 @@ Decoder.h
 /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Decoder.h
 portaudio.h
 /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/portaudio.h
+Sampler.h
+/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Sampler.h
 cstring
 -
 iostream

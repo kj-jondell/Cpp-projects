@@ -1,6 +1,9 @@
 #include "Player.h"
 
-Player::Player(bool debug) : debug_(debug) { initPlayer(); }
+Player::Player(bool debug) : debug_(debug) {
+    initPlayer();
+    sampler = new Sampler(FRAMES_PER_BUFFER);
+}
 
 Player::~Player(void) { stop(); }
 
@@ -11,6 +14,8 @@ void Player::initPlayer() {
     Pa_Initialize();
 
     for (int i = 0; i < Pa_GetDeviceCount(); i++) {
+        // printf("%s\n", Pa_GetDeviceInfo(i)->name);
+        // printf("%d\n", Pa_GetDeviceInfo(i)->maxOutputChannels);
         if (strcmp(Pa_GetDeviceInfo(i)->name, INPUT_DEVICE_NAME) == 0)
             inputDeviceIndex = i;
         if (strcmp(Pa_GetDeviceInfo(i)->name, OUTPUT_DEVICE_NAME) == 0)
@@ -52,11 +57,17 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
                               const PaStreamCallbackTimeInfo *timeInfo,
                               PaStreamCallbackFlags statusFlags) {
     float *in = (float *)inputBuffer, *out = (float *)outputBuffer;
-    decoder->getCode(in, framesPerBuffer);
+    char code = decoder->getCode(in, framesPerBuffer);
+
+    float *nextFrame = sampler->getNextFrame();
+
+    for (int i = 0; i < framesPerBuffer; i++)
+        out[i] = nextFrame[i];
 
     if (debug_)
-        for (int i = 0; i < framesPerBuffer; i++)
-            out[i] = in[i];
+        if (code)
+            printf("received: %c\n", code);
+    ;
     // else ;// play soundfile    ;
 
     return paContinue;

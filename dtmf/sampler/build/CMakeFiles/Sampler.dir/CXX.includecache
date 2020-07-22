@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/sampler/Sampler.h
+portaudio.h
+/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/sampler/portaudio.h
+sndfile.hh
+/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/sampler/sndfile.hh
+array
+-
+cstring
+-
+iostream
+-
+stdio.h
+-
+vector
+-
+
+/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/sampler/main.cpp
+Sampler.h
+/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/sampler/Sampler.h
+iostream
+-
+
