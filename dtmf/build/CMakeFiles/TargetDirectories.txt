@@ -1,8 +1,8 @@
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles/rebuild_cache.dir
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles/edit_cache.dir
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles/DTMFDecoder.dir
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles/playerlib.dir
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/sampler/CMakeFiles/rebuild_cache.dir
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/sampler/CMakeFiles/edit_cache.dir
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/sampler/CMakeFiles/Sampler.dir
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/sampler/CMakeFiles/libsampler.dir
+/Users/kj/Documents/projects/Cpp-projects/dtmf/build/CMakeFiles/rebuild_cache.dir
+/Users/kj/Documents/projects/Cpp-projects/dtmf/build/CMakeFiles/edit_cache.dir
+/Users/kj/Documents/projects/Cpp-projects/dtmf/build/CMakeFiles/DTMFDecoder.dir
+/Users/kj/Documents/projects/Cpp-projects/dtmf/build/CMakeFiles/playerlib.dir
+/Users/kj/Documents/projects/Cpp-projects/dtmf/build/sampler/CMakeFiles/rebuild_cache.dir
+/Users/kj/Documents/projects/Cpp-projects/dtmf/build/sampler/CMakeFiles/edit_cache.dir
+/Users/kj/Documents/projects/Cpp-projects/dtmf/build/sampler/CMakeFiles/Sampler.dir
+/Users/kj/Documents/projects/Cpp-projects/dtmf/build/sampler/CMakeFiles/libsampler.dir

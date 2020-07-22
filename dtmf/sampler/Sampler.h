@@ -1,7 +1,6 @@
 #ifndef SAMPLER_H
 #define SAMPLER_H
 
-#include "portaudio.h" // TODO remove dependency on portaudio
 #include "sndfile.hh"
 #include <cstring>
 #include <iostream>
@@ -14,19 +13,20 @@
 using namespace std;
 
 typedef struct Sample {
-    SndfileHandle file;
-    bool playing = false, looping = false;
+  SndfileHandle file;
+  bool playing = false, looping = false;
 } Sample;
 
 class Sampler {
 
-  private:
-    vector<Sample> samples;
+private:
+  vector<Sample> samples;
 
-  public:
-    Sampler();
-    virtual ~Sampler();
-    float *getNextFrame();
+public:
+  Sampler();
+  virtual ~Sampler();
+  float *getNextFrame();
+  void setPlaying(int index) { samples[index].playing = true; }
 };
 
 #endif /* SAMPLER_H */

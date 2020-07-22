@@ -1,1 +1,1 @@
-/usr/bin/c++     CMakeFiles/Sampler.dir/main.cpp.o  -o Sampler  liblibsampler.a -lsndfile -lportaudio 
+/Library/Developer/CommandLineTools/usr/bin/c++   -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/Sampler.dir/main.cpp.o  -o Sampler  liblibsampler.a -framework AudioUnit -framework CoreServices -framework CoreFoundation -framework AudioToolbox -framework CoreAudio /usr/local/lib/libsndfile.dylib 

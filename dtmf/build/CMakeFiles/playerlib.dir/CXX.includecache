@@ -16,9 +16,25 @@ utility
 cassert
 -
 
+../libs/libsndfile/include/sndfile.h
+stdio.h
+-
+stdint.h
+-
+sys/types.h
+-
+
+../libs/libsndfile/include/sndfile.hh
+sndfile.h
+-
+string
+-
+new
+-
+
+../libs/portaudio/include/portaudio.h
+
 ../sampler/Sampler.h
-portaudio.h
-../sampler/portaudio.h
 sndfile.hh
 ../sampler/sndfile.hh
 cstring
@@ -30,25 +46,27 @@ stdio.h
 vector
 -
 
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Decoder.h
+/Users/kj/Documents/projects/Cpp-projects/dtmf/Decoder.h
 GoertzelFilter.hpp
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/GoertzelFilter.hpp
+/Users/kj/Documents/projects/Cpp-projects/dtmf/GoertzelFilter.hpp
 iostream
+-
+map
 -
 vector
 -
 
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Player.cpp
+/Users/kj/Documents/projects/Cpp-projects/dtmf/Player.cpp
 Player.h
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Player.h
+/Users/kj/Documents/projects/Cpp-projects/dtmf/Player.h
 
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Player.h
+/Users/kj/Documents/projects/Cpp-projects/dtmf/Player.h
 Decoder.h
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Decoder.h
+/Users/kj/Documents/projects/Cpp-projects/dtmf/Decoder.h
 portaudio.h
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/portaudio.h
+/Users/kj/Documents/projects/Cpp-projects/dtmf/portaudio.h
 Sampler.h
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Sampler.h
+/Users/kj/Documents/projects/Cpp-projects/dtmf/Sampler.h
 cstring
 -
 iostream
