@@ -18,12 +18,8 @@ add_executable(DTMFDecoder main.cpp)
 
 target_include_directories(playerlib PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/libs/goertzel/include") 
 
-target_include_directories(playerlib PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/libs/libsndfile/include") 
-target_link_libraries(playerlib "${CMAKE_CURRENT_SOURCE_DIR}/libs/libsndfile/lib/libsndfile.a")
-
 target_include_directories(playerlib PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/libs/portaudio/include")
-target_link_libraries(playerlib "${CMAKE_CURRENT_SOURCE_DIR}/libs/portaudio/lib/libportaudio.a")
-target_link_libraries(playerlib "${CMAKE_CURRENT_SOURCE_DIR}/libs/portaudio/lib/libportaudiocpp.a")
+target_link_libraries(playerlib portaudio)
 
 if(APPLE)
     target_link_libraries(playerlib ${AUDIO_UNIT})

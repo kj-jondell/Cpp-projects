@@ -8,38 +8,38 @@ Player::~Player(void) { stop(); }
  * Initilize Port audio
  */
 void Player::initPlayer() {
-  Pa_Initialize();
+    Pa_Initialize();
 
-  for (int i = 0; i < Pa_GetDeviceCount(); i++) {
-    if (strcmp(Pa_GetDeviceInfo(i)->name, INPUT_DEVICE_NAME) == 0)
-      inputDeviceIndex = i;
-    if (strcmp(Pa_GetDeviceInfo(i)->name, OUTPUT_DEVICE_NAME) == 0)
-      outputDeviceIndex = i;
-  }
+    for (int i = 0; i < Pa_GetDeviceCount(); i++) {
+        if (strcmp(Pa_GetDeviceInfo(i)->name, INPUT_DEVICE_NAME) == 0)
+            inputDeviceIndex = i;
+        if (strcmp(Pa_GetDeviceInfo(i)->name, OUTPUT_DEVICE_NAME) == 0)
+            outputDeviceIndex = i;
+    }
 
-  // input settings
-  inputParameters.channelCount = IN_CHANNELS;
-  inputParameters.device = inputDeviceIndex;
-  inputParameters.sampleFormat = paFloat32;
-  inputParameters.suggestedLatency =
-      Pa_GetDeviceInfo(inputDeviceIndex)->defaultLowInputLatency;
+    // input settings
+    inputParameters.channelCount = IN_CHANNELS;
+    inputParameters.device = inputDeviceIndex;
+    inputParameters.sampleFormat = paFloat32;
+    inputParameters.suggestedLatency =
+        Pa_GetDeviceInfo(inputDeviceIndex)->defaultLowInputLatency;
 
-  // output settings
-  outputParameters.channelCount = OUT_CHANNELS;
-  outputParameters.device = outputDeviceIndex;
-  outputParameters.sampleFormat = paFloat32;
-  outputParameters.suggestedLatency =
-      Pa_GetDeviceInfo(outputDeviceIndex)->defaultLowOutputLatency;
+    // output settings
+    outputParameters.channelCount = OUT_CHANNELS;
+    outputParameters.device = outputDeviceIndex;
+    outputParameters.sampleFormat = paFloat32;
+    outputParameters.suggestedLatency =
+        Pa_GetDeviceInfo(outputDeviceIndex)->defaultLowOutputLatency;
 }
 
 /**
  * Open port audio stream as definied in init
  */
 void Player::openStream() {
-  decoder = new Decoder(SAMPLE_RATE, debug_);
-  err =
-      Pa_OpenStream(&stream, &inputParameters, &outputParameters, SAMPLE_RATE,
-                    FRAMES_PER_BUFFER, paNoFlag, staticPortAudioCallback, this);
+    decoder = new Decoder(SAMPLE_RATE, debug_);
+    err = Pa_OpenStream(&stream, &inputParameters, &outputParameters,
+                        SAMPLE_RATE, FRAMES_PER_BUFFER, paNoFlag,
+                        staticPortAudioCallback, this);
 }
 
 /**
@@ -51,16 +51,15 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
                               unsigned long framesPerBuffer,
                               const PaStreamCallbackTimeInfo *timeInfo,
                               PaStreamCallbackFlags statusFlags) {
-  float *in = (float *)inputBuffer, *out = (float *)outputBuffer;
-  decoder->getCode(in, framesPerBuffer);
+    float *in = (float *)inputBuffer, *out = (float *)outputBuffer;
+    decoder->getCode(in, framesPerBuffer);
 
-  if (debug_)
-    for (int i = 0; i < framesPerBuffer; i++)
-      out[i] = in[i];
-  else // play soundfile
-    ;
+    if (debug_)
+        for (int i = 0; i < framesPerBuffer; i++)
+            out[i] = in[i];
+    // else ;// play soundfile    ;
 
-  return paContinue;
+    return paContinue;
 }
 
 /**
@@ -71,7 +70,7 @@ int Player::staticPortAudioCallback(const void *inputBuffer, void *outputBuffer,
                                     const PaStreamCallbackTimeInfo *timeInfo,
                                     PaStreamCallbackFlags statusFlags,
                                     void *userData) {
-  return ((Player *)userData)
-      ->portAudioCallback(inputBuffer, outputBuffer, framesPerBuffer, timeInfo,
-                          statusFlags);
+    return ((Player *)userData)
+        ->portAudioCallback(inputBuffer, outputBuffer, framesPerBuffer,
+                            timeInfo, statusFlags);
 }

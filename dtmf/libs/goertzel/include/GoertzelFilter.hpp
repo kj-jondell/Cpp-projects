@@ -49,7 +49,7 @@ public:
     }
     
     /** Anything less than this is meaningless */
-    static const T EPSILON = 0.000000001;
+    static constexpr T EPSILON = 0.000000001;
     
     /** The "kernel" of the Goertzel recursive calculation.
         @param sample Array of samples to pass through the filter
