@@ -7,6 +7,9 @@ Sampler::Sampler() {
     Sample newSample = {.file = SndfileHandle(buf)};
     samples.push_back(newSample);
   }
+  samples[3].looping = true;
+  samples[7].looping = true;
+  samples[9].looping = true;
 }
 Sampler::~Sampler(void) {}
 
@@ -20,7 +23,7 @@ float *Sampler::getNextFrame() {
       if (!samples[i].file.read(buffer, FRAMES_PER_BUFFER)) {
         if (!samples[i].looping)
           samples[i].playing = false;
-        samples[i].file.seek(0, 0);
+        reset(i);
       }
       for (int index = 0; index < FRAMES_PER_BUFFER; index++)
         summedBuffer[index] += buffer[index];

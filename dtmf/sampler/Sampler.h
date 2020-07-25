@@ -15,6 +15,8 @@ using namespace std;
 typedef struct Sample {
   SndfileHandle file;
   bool playing = false, looping = false;
+  void togglePlaying() { playing = !playing; }
+  void reset() { file.seek(0, 0); }
 } Sample;
 
 class Sampler {
@@ -26,7 +28,13 @@ public:
   Sampler();
   virtual ~Sampler();
   float *getNextFrame();
-  void setPlaying(int index) { samples[index].playing = true; }
+  void reset(int index) { samples[index].reset(); }
+  void setPlaying(int index) {
+    if (samples[index].looping)
+      samples[index].togglePlaying();
+    else
+      samples[index].playing = true;
+  }
 };
 
 #endif /* SAMPLER_H */
