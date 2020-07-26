@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/playerlib.dir/Decoder.cpp.o"
   "CMakeFiles/playerlib.dir/Player.cpp.o"
-  "libplayerlib.a"
+  "CMakeFiles/playerlib.dir/Decoder.cpp.o"
   "libplayerlib.pdb"
+  "libplayerlib.a"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/sampler/Sampler.cpp" "/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/sampler/CMakeFiles/libsampler.dir/Sampler.cpp.o"
+  "/home/pi/DTMFDecoder/Cpp-projects/dtmf/sampler/Sampler.cpp" "/home/pi/DTMFDecoder/Cpp-projects/dtmf/build/sampler/CMakeFiles/libsampler.dir/Sampler.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

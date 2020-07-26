@@ -28,9 +28,9 @@ stdio.h
 vector
 -
 
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Decoder.h
+/home/pi/DTMFDecoder/Cpp-projects/dtmf/Decoder.h
 GoertzelFilter.hpp
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/GoertzelFilter.hpp
+/home/pi/DTMFDecoder/Cpp-projects/dtmf/GoertzelFilter.hpp
 iostream
 -
 map
@@ -38,13 +38,13 @@ map
 vector
 -
 
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Player.h
+/home/pi/DTMFDecoder/Cpp-projects/dtmf/Player.h
 Decoder.h
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Decoder.h
+/home/pi/DTMFDecoder/Cpp-projects/dtmf/Decoder.h
 Sampler.h
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Sampler.h
+/home/pi/DTMFDecoder/Cpp-projects/dtmf/Sampler.h
 portaudio.h
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/portaudio.h
+/home/pi/DTMFDecoder/Cpp-projects/dtmf/portaudio.h
 cstring
 -
 iostream
@@ -52,11 +52,11 @@ iostream
 string
 -
 
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/main.cpp
+/home/pi/DTMFDecoder/Cpp-projects/dtmf/main.cpp
 Player.h
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Player.h
+/home/pi/DTMFDecoder/Cpp-projects/dtmf/Player.h
 portaudio.h
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/portaudio.h
+/home/pi/DTMFDecoder/Cpp-projects/dtmf/portaudio.h
 iostream
 -
 

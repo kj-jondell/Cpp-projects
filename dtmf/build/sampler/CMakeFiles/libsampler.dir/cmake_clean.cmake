@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/libsampler.dir/Sampler.cpp.o"
-  "liblibsampler.a"
   "liblibsampler.pdb"
+  "liblibsampler.a"
 )
 
 # Per-language clean rules from dependency scanning.

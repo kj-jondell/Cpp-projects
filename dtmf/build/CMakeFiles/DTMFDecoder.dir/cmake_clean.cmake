@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/DTMFDecoder.dir/main.cpp.o"
-  "DTMFDecoder"
   "DTMFDecoder.pdb"
+  "DTMFDecoder"
 )
 
 # Per-language clean rules from dependency scanning.
