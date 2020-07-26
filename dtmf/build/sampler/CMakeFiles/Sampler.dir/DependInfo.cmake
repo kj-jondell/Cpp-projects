@@ -4,19 +4,18 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/kj/Documents/projects/Cpp-projects/dtmf/sampler/main.cpp" "/Users/kj/Documents/projects/Cpp-projects/dtmf/build/sampler/CMakeFiles/Sampler.dir/main.cpp.o"
+  "/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/sampler/main.cpp" "/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/sampler/CMakeFiles/Sampler.dir/main.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "AppleClang")
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../sampler"
-  "../sampler/../libs/libsndfile/include"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/Users/kj/Documents/projects/Cpp-projects/dtmf/build/sampler/CMakeFiles/libsampler.dir/DependInfo.cmake"
+  "/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/sampler/CMakeFiles/libsampler.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

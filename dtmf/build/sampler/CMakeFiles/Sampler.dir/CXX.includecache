@@ -6,25 +6,9 @@
 
 #IncludeRegexTransform: 
 
-../libs/libsndfile/include/sndfile.h
-stdio.h
--
-stdint.h
--
-sys/types.h
--
-
-../libs/libsndfile/include/sndfile.hh
-sndfile.h
--
-string
--
-new
--
-
-/Users/kj/Documents/projects/Cpp-projects/dtmf/sampler/Sampler.h
+/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/sampler/Sampler.h
 sndfile.hh
-/Users/kj/Documents/projects/Cpp-projects/dtmf/sampler/sndfile.hh
+/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/sampler/sndfile.hh
 cstring
 -
 iostream
@@ -34,9 +18,9 @@ stdio.h
 vector
 -
 
-/Users/kj/Documents/projects/Cpp-projects/dtmf/sampler/main.cpp
+/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/sampler/main.cpp
 Sampler.h
-/Users/kj/Documents/projects/Cpp-projects/dtmf/sampler/Sampler.h
+/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/sampler/Sampler.h
 iostream
 -
 
