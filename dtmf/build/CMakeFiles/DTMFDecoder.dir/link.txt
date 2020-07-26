@@ -1,1 +1,1 @@
-/usr/bin/c++     CMakeFiles/DTMFDecoder.dir/main.cpp.o  -o DTMFDecoder libplayerlib.a sampler/liblibsampler.a -lsndfile -lportaudio 
+/usr/bin/c++     CMakeFiles/DTMFDecoder.dir/main.cpp.o  -o DTMFDecoder  libplayerlib.a sampler/liblibsampler.a -lsndfile -lportaudio 

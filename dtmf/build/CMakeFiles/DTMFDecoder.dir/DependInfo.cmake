@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pi/DTMFDecoder/Cpp-projects/dtmf/main.cpp" "/home/pi/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles/DTMFDecoder.dir/main.cpp.o"
+  "/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/main.cpp" "/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles/DTMFDecoder.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -16,8 +16,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/pi/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles/playerlib.dir/DependInfo.cmake"
-  "/home/pi/DTMFDecoder/Cpp-projects/dtmf/build/sampler/CMakeFiles/libsampler.dir/DependInfo.cmake"
+  "/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/CMakeFiles/playerlib.dir/DependInfo.cmake"
+  "/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/build/sampler/CMakeFiles/libsampler.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

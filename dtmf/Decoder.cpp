@@ -35,7 +35,7 @@ int Decoder::getIndexFromCode(char code) { return SYMBOL_TO_INDEX.at(code); }
 char Decoder::getCode(float *in, int size) {
     char returnedChar = NULL;
     for (int x = 0; x < 4; x++)
-        for (int y = 0; y < 4; y++) {
+        for (int y = 0; y < 3; y++) {
             int index = getIndexOfSymbol(DECODE_TABLE[x][y]);
 
             if (isPeak(DTMF_TABLE[0][x], in, size) &&

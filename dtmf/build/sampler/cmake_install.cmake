@@ -1,4 +1,4 @@
-# Install script for directory: /home/pi/DTMFDecoder/Cpp-projects/dtmf/sampler
+# Install script for directory: /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/sampler
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
