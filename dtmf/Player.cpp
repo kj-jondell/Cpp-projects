@@ -68,7 +68,7 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
     float *nextFrame = sampler->getNextFrame();
 
     for (int i = 0; i < framesPerBuffer; i++)
-        out[i] = 0.8 * nextFrame[i];
+        out[i] = 0.8 * nextFrame[i]; //+ 0.8 * in[i]; // feedback dtmf-tones
 
     if (debug_)
         if (code)

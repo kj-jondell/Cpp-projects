@@ -28,10 +28,6 @@ stdio.h
 vector
 -
 
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Decoder.cpp
-Decoder.h
-/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Decoder.h
-
 /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/Decoder.h
 GoertzelFilter.hpp
 /home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/GoertzelFilter.hpp

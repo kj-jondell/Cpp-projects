@@ -6,7 +6,7 @@
 #include <map>
 #include <vector>
 
-#define DBM_THRESHOLD 0.00005
+#define DBM_THRESHOLD 0.0005
 #define MAX_LOSS 5
 
 using namespace std;

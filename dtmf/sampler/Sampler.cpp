@@ -1,9 +1,12 @@
 #include "Sampler.h"
 
 Sampler::Sampler() {
-    char buf[50];
+    char buf[100];
     for (int i = 1; i <= NUM_FILES; i++) {
-        sprintf(buf, "../sounds/Piano%d.wav", i);
+        sprintf(buf,
+                "/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/"
+                "sounds/Piano%d.wav",
+                i);
         Sample newSample = {.file = SndfileHandle(buf)};
         samples.push_back(newSample);
     }
