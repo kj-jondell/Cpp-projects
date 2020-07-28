@@ -29,7 +29,7 @@ class Decoder {
                                      {'7', '8', '9'}, // 'C'},
                                      {'*', '0', '#'},
                                      /*'D'}*/};
-    const map<char, int> SYMBOL_TO_INDEX = {
+    const map<char, int> SYMBOL_TO_INDEX = { // TODO better way to handle this!
         {'1', 0}, {'2', 1}, {'3', 2}, {'4', 3}, {'5', 4},  {'6', 5},
         {'7', 6}, {'8', 7}, {'9', 8}, {'*', 9}, {'0', 10}, {'#', 11}};
 
