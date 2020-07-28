@@ -8,15 +8,13 @@ if(APPLE)
     find_library(CORE_FOUNDATION CoreFoundation)
     find_library(AUDIO_TOOLBOX AudioToolbox)
     find_library(CORE_AUDIO CoreAudio)
-    find_library(LIBSNDFILE Sndfile)
+    find_library(SNDFILE SndFile)
 endif()
 
 add_library(
     libsampler STATIC
     Sampler.h Sampler.cpp
 )
-
-add_executable(Sampler main.cpp)
 
 if(NOT APPLE)
     target_link_libraries(libsampler sndfile)
@@ -28,8 +26,6 @@ if(APPLE)
     target_link_libraries(libsampler ${CORE_FOUNDATION})
     target_link_libraries(libsampler ${AUDIO_TOOLBOX})
     target_link_libraries(libsampler ${CORE_AUDIO})
-    target_include_directories(libsampler PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../libs/libsndfile/include") 
-    target_link_libraries(libsampler ${LIBSNDFILE})
+    target_include_directories(libsampler PUBLIC /usr/local/include)
+    target_link_libraries(libsampler ${SNDFILE})
 endif()
-
-target_link_libraries(Sampler libsampler)

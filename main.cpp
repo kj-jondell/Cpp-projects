@@ -10,13 +10,24 @@
 #include <iostream>
 
 #define BREAK_CHAR '0'
-#define DEBUG true
+#define DEBUG false
+
+#define DEFAULT_INPUT_DEVICE_NAME "USB Audio Device: - (hw:2,0)"
+#define DEFAULT_OUTPUT_DEVICE_NAME "USB Audio Device: - (hw:2,0)"
+#define DEFAULT_FILEPATH                                                       \
+  "/home/kj/Documents/projects/DTMFDecoder/Cpp-projects/dtmf/sounds/"          \
+  "Piano%d.wav"
 
 using namespace std;
 
 int main(int argc, char *argv[]) {
+  // TODO better argument parsing (keys...)
+  const char *in = argc >= 2 ? argv[1] : DEFAULT_INPUT_DEVICE_NAME,
+             *out = argc >= 3 ? argv[2] : DEFAULT_OUTPUT_DEVICE_NAME,
+             *filePath = argc >= 4 ? argv[3] : DEFAULT_FILEPATH;
+  bool debug = argc >= 5 ? (strcmp(argv[4], "debug") == 0) : DEBUG;
 
-  Player *player = new Player(DEBUG);
+  Player *player = new Player(debug, in, out, filePath);
 
   player->openStream();
   player->start();

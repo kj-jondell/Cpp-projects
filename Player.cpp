@@ -1,10 +1,10 @@
 #include "Player.h"
 
-Player::Player(bool debug, char *inputDeviceName, char *outputDeviceName)
-    : debug_(debug), inputDeviceName_(inputDeviceName),
-      outputDeviceName_(outputDeviceName) {
-  initPlayer();
-  sampler = new Sampler();
+Player::Player(bool debug, const char *inputDeviceName,
+               const char *outputDeviceName, const char *filePath)
+    : debug_(debug) {
+  initPlayer(inputDeviceName, outputDeviceName);
+  sampler = new Sampler(filePath);
 }
 
 Player::~Player(void) { stop(); }
@@ -12,15 +12,17 @@ Player::~Player(void) { stop(); }
 /**
  * Initilize Port audio
  */
-void Player::initPlayer() {
+void Player::initPlayer(const char *inputDeviceName,
+                        const char *outputDeviceName) {
   Pa_Initialize();
 
   for (int i = 0; i < Pa_GetDeviceCount(); i++) {
     // printf("%s\n", Pa_GetDeviceInfo(i)->name);
     // printf("%d\n", Pa_GetDeviceInfo(i)->maxOutputChannels);
-    if (strcmp(Pa_GetDeviceInfo(i)->name, inputDeviceName_) == 0)
+    if (strcmp(Pa_GetDeviceInfo(i)->name, inputDeviceName) == 0)
       inputDeviceIndex = i;
-    if (strcmp(Pa_GetDeviceInfo(i)->name, outputDeviceName_) == 0)
+
+    if (strcmp(Pa_GetDeviceInfo(i)->name, outputDeviceName) == 0)
       outputDeviceIndex = i;
   }
 
@@ -59,24 +61,28 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
                               const PaStreamCallbackTimeInfo *timeInfo,
                               PaStreamCallbackFlags statusFlags) {
   float *in = (float *)inputBuffer, *out = (float *)outputBuffer;
-  char code = decoder->getCode(in, framesPerBuffer);
+  char code = decoder->getCode(in, framesPerBuffer, timeKeeper);
 
   if (code) {
     int index = decoder->getIndexFromCode(code);
     sampler->reset(index);
     sampler->setPlaying(index);
+    decoder->getCurrentSequence();
   }
 
   float *nextFrame = sampler->getNextFrame();
 
   for (int i = 0; i < framesPerBuffer; i++)
-    out[i] = 0.8 * nextFrame[i]; //+ 0.8 * in[i]; // feedback dtmf-tones
+    out[i] =
+        0.8f * nextFrame[i] + INPUT_FEEDBACK * in[i]; // feedback dtmf-tones
 
   if (debug_)
     if (code)
       printf("received: %c\n", code);
   ;
   // else ;// play soundfile    ;
+
+  timeKeeper++;
 
   return paContinue;
 }

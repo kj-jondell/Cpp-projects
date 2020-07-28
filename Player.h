@@ -5,6 +5,7 @@
 #include "Sampler.h"
 #include "portaudio.h"
 #include <cstring>
+#include <ctime>
 #include <iostream>
 #include <string>
 
@@ -13,13 +14,15 @@
 #define FRAMES_PER_BUFFER 512
 #define SAMPLE_RATE 48000.f
 
+#define INPUT_FEEDBACK 0.8f
+
 using namespace std;
 
 class Player {
 
 private:
-  int inputDeviceIndex = 0, outputDeviceIndex = 1;
-  char *inputDeviceName_, *outputDeviceName_;
+  int inputDeviceIndex = 0, outputDeviceIndex = 0;
+  unsigned long timeKeeper = 0;
   PaError err;
   PaStream *stream;
   PaStreamParameters outputParameters, inputParameters;
@@ -28,7 +31,7 @@ private:
 
   bool debug_;
 
-  void initPlayer();
+  void initPlayer(const char *in, const char *out);
   int portAudioCallback(const void *inputBuffer, void *outputBuffer,
                         unsigned long framesPerBuffer,
                         const PaStreamCallbackTimeInfo *timeInfo,
@@ -41,8 +44,8 @@ private:
                                      void *userData);
 
 public:
-  Player(bool debug = false, char *in = "USB Audio Device: - (hw:2,0)",
-         char *out = "USB Audio Device: - (hw:2,0)");
+  Player(bool debug = false, const char *in = "", const char *out = "",
+         const char *filePath = "");
   virtual ~Player();
 
   void start() { Pa_StartStream(stream); } // TODO implement error checking

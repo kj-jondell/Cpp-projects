@@ -34,7 +34,7 @@ if(APPLE)
     target_link_libraries(playerlib ${CORE_FOUNDATION})
     target_link_libraries(playerlib ${AUDIO_TOOLBOX})
     target_link_libraries(playerlib ${CORE_AUDIO})
-    target_include_directories(playerlib PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/libs/portaudio/include")
+    target_include_directories(playerlib PUBLIC /usr/local/include)
     target_link_libraries(playerlib ${PORTAUDIO})
 endif()
 

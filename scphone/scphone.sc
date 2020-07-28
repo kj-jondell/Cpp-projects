@@ -18,7 +18,7 @@ Server.default.waitForBoot({
     var telephoneArray = [[1209,697],[1336,697],[1477,697],[1209,770],[1336,770],[1477,770],[1209,852],[1336,852],[1477,852], [1209, 941], [1336,941], [1477, 941]]; //make into Scale
 
     SynthDef.new(\sine, {
-        arg freq = [1336,941], duration = 0.25;
+        arg freq = #[1336,941], duration = 0.25;
         var sig = (EnvGen.kr(Env.linen(0.001,duration,0.001))*SinOsc.ar(freq, mul: 0.5));
         Out.ar(0, Mix(sig)!2)
     }).add;

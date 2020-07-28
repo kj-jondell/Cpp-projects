@@ -13,28 +13,28 @@
 using namespace std;
 
 typedef struct Sample {
-    SndfileHandle file;
-    bool playing = false, looping = false;
-    void togglePlaying() { playing = !playing; }
-    void reset() { file.seek(0, 0); }
+  SndfileHandle file;
+  bool playing = false, looping = false;
+  void togglePlaying() { playing = !playing; }
+  void reset() { file.seek(0, 0); }
 } Sample;
 
 class Sampler {
 
-  private:
-    vector<Sample> samples;
+private:
+  vector<Sample> samples;
 
-  public:
-    Sampler();
-    virtual ~Sampler();
-    float *getNextFrame();
-    void reset(int index) { samples[index].reset(); }
-    void setPlaying(int index) {
-        if (samples[index].looping)
-            samples[index].togglePlaying();
-        else
-            samples[index].playing = true;
-    }
+public:
+  Sampler(const char *fileName);
+  virtual ~Sampler();
+  float *getNextFrame();
+  void reset(int index) { samples[index].reset(); }
+  void setPlaying(int index) {
+    if (samples[index].looping)
+      samples[index].togglePlaying();
+    else
+      samples[index].playing = true;
+  }
 };
 
 #endif /* SAMPLER_H */
