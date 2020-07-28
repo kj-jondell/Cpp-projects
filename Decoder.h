@@ -41,12 +41,12 @@ private:
   ReceivedSymbol *getSymbol(char ch);
   int getIndexOfSymbol(char ch);
   bool isPeak(float freq, float *in, int size);
+  char parseSequence();
 
 public:
   Decoder(float sampleRate, bool debug = false);
   virtual ~Decoder();
   char getCode(float *in, int size, unsigned long time);
-  void getCurrentSequence();
   int getIndexFromCode(char code);
 };
 

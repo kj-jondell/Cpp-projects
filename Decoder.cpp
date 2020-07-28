@@ -32,8 +32,21 @@ int Decoder::getIndexOfSymbol(char ch) {
 
 int Decoder::getIndexFromCode(char code) { return SYMBOL_TO_INDEX.at(code); }
 
-void Decoder::getCurrentSequence() {
-  // printf("%d %d\n", currentSequence.back().receivedTime, 0);
+/**
+ * Parse phone number (number sequence) and return code if number does not have
+ * special action!
+ */
+char Decoder::parseSequence() {
+  string sequence;
+  for (int i = 0; i < currentSequence.size(); i++)
+    sequence.push_back(currentSequence.at(i).symbol);
+
+  if (!sequence.compare("1706")) {
+    if (debug_)
+      cout << "record!" << endl;
+    return NULL;
+  } else
+    return currentSequence.back().symbol;
 }
 
 /**
@@ -54,13 +67,14 @@ char Decoder::getCode(float *in, int size, unsigned long time) {
         if (++symbols[index].notReceivedCounter == MAX_LOSS &&
             returnedChar == NULL) {
           symbols[index].receivedTime = time;
-
-          if (currentSequence.size() > 0)
-            printf("%d\n", time - currentSequence.back().receivedTime);
-
           currentSequence.push_back(symbols[index]);
-          returnedChar = symbols[index].symbol; // signal on falling edge!
         }
+    }
+
+  if (currentSequence.size() > 0)
+    if ((time - currentSequence.back().receivedTime) > SEQUENCE_ENTRY_DELAY) {
+      returnedChar = parseSequence(); // signal on falling edge!
+      currentSequence.clear();
     }
 
   return returnedChar;

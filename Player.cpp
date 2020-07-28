@@ -67,7 +67,6 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
     int index = decoder->getIndexFromCode(code);
     sampler->reset(index);
     sampler->setPlaying(index);
-    decoder->getCurrentSequence();
   }
 
   float *nextFrame = sampler->getNextFrame();
