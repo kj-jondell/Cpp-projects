@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/Sampler.dir/main.cpp.o  -o Sampler  liblibsampler.a -lsndfile -lportaudio 
