@@ -6,7 +6,7 @@
 #include <map>
 #include <vector>
 
-#define DBM_THRESHOLD 0.0001
+#define DBM_THRESHOLD 0.0005
 #define MAX_LOSS 5
 
 #define SEQUENCE_ENTRY_DELAY 15 // given in amt of buffers
