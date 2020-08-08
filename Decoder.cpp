@@ -41,15 +41,35 @@ char Decoder::parseSequence() {
   for (int i = 0; i < currentSequence.size(); i++)
     sequence.push_back(currentSequence.at(i).symbol);
 
-  if (!sequence.compare("1706")) {
+  if (!sequence.compare("1706")) { // different "cases"
     if (debug_)
-      cout << "record!" << endl;
+      cout << "record 1!" << endl;
+    return NULL;
+  } else if (!sequence.compare("2305")) { // different "cases"
+    if (debug_)
+      cout << "record 2!" << endl;
+    return NULL;
+  } else if (!sequence.compare("4713")) { // different "cases"
+    if (debug_)
+      cout << "record 3!" << endl;
+    return NULL;
+  } else if (!sequence.compare("19#2")) { // different "cases"
+    if (debug_)
+      cout << "record 4!" << endl;
+    return NULL;
+  } else if (!sequence.compare("09*7")) { // different "cases"
+    if (debug_)
+      cout << "record 5!" << endl;
+    return NULL;
+  } else if (!sequence.compare("1321")) { // different "cases"
+    if (debug_)
+      cout << "record 6!" << endl;
     return NULL;
   } else
-    return currentSequence.back().symbol;
+    return currentSequence.back().symbol; // return last pressed digit
 }
 
-/**
+/** 2
  * Checking for falling edges TODO boolean to get on rising/falling edge?
  */
 char Decoder::getCode(float *in, int size, unsigned long time) {
