@@ -41,6 +41,7 @@ char Decoder::parseSequence() {
   for (int i = 0; i < currentSequence.size(); i++)
     sequence.push_back(currentSequence.at(i).symbol);
 
+  // TODO switch case (not possible with strings in c++)?
   if (!sequence.compare("1706")) { // different "cases"
     if (debug_)
       cout << "record 1!" << endl;
