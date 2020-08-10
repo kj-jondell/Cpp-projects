@@ -16,7 +16,7 @@
 
 #define INPUT_FEEDBACK 0.8f
 
-#define RECORDING_CHAR '*'
+#define RECORDING_CHAR '#'
 
 using namespace std;
 
@@ -31,7 +31,7 @@ private:
   Decoder *decoder;
   Sampler *sampler;
 
-  bool debug_, recording;
+  bool debug_, recordingMode;
 
   void initPlayer(const char *in, const char *out);
   int portAudioCallback(const void *inputBuffer, void *outputBuffer,

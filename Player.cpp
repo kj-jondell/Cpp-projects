@@ -63,13 +63,27 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
   float *in = (float *)inputBuffer, *out = (float *)outputBuffer;
   char code = decoder->getCode(in, framesPerBuffer, timeKeeper);
 
-  if (code)
+  if (code) // if code is received
     if (code == RECORDING_CHAR)
-      ;
-    else {
+      recordingMode = !recordingMode; // toggle recording mode
+    else if (code < 10) {
+      if (recordingMode) {
+        // records
+        if (debug_)
+          printf("recording: %d\n", code);
+      } else {
+        // plays if recording exist
+        if (debug_)
+          printf("playing: %d\n", code);
+      }
+    } else {
+      recordingMode = false;
       int index = decoder->getIndexFromCode(code);
       sampler->reset(index);
       sampler->setPlaying(index);
+
+      if (debug_)
+        printf("received: %c\n", code);
     }
 
   float *nextFrame = sampler->getNextFrame();
@@ -78,10 +92,6 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
     out[i] =
         0.8f * nextFrame[i] + INPUT_FEEDBACK * in[i]; // feedback dtmf-tones
 
-  if (debug_)
-    if (code)
-      printf("received: %c\n", code);
-  ;
   // else ;// play soundfile    ;
 
   timeKeeper++;
