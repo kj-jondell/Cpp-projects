@@ -16,6 +16,8 @@
 
 #define INPUT_FEEDBACK 0.8f
 
+#define RECORDING_CHAR '*'
+
 using namespace std;
 
 class Player {
@@ -29,7 +31,7 @@ private:
   Decoder *decoder;
   Sampler *sampler;
 
-  bool debug_;
+  bool debug_, recording;
 
   void initPlayer(const char *in, const char *out);
   int portAudioCallback(const void *inputBuffer, void *outputBuffer,

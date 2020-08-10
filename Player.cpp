@@ -63,11 +63,14 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
   float *in = (float *)inputBuffer, *out = (float *)outputBuffer;
   char code = decoder->getCode(in, framesPerBuffer, timeKeeper);
 
-  if (code) {
-    int index = decoder->getIndexFromCode(code);
-    sampler->reset(index);
-    sampler->setPlaying(index);
-  }
+  if (code)
+    if (code == RECORDING_CHAR)
+      ;
+    else {
+      int index = decoder->getIndexFromCode(code);
+      sampler->reset(index);
+      sampler->setPlaying(index);
+    }
 
   float *nextFrame = sampler->getNextFrame();
 
