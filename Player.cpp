@@ -63,21 +63,35 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
   float *in = (float *)inputBuffer, *out = (float *)outputBuffer;
   char code = decoder->getCode(in, framesPerBuffer, timeKeeper);
 
-  if (code) // if code is received
-    if (code == RECORDING_CHAR)
-      recordingMode = !recordingMode; // toggle recording mode
-    else if (code < 10) {
+  if (currentlyRecording) {
+    currentlyRecording = sampler->recordFrame(in, timeKeeper);
+    if (!currentlyRecording) {
+      recordingMode = false;
+      if (debug_)
+        printf("%s\n", "stopped recording!");
+    }
+  } else if (code) { // if code is received
+    if (code < 10) {
       if (recordingMode) {
+        currentlyRecording = true;
+        sampler->startRecording((int)code, timeKeeper);
         // records
         if (debug_)
           printf("recording: %d\n", code);
       } else {
+        sampler->reset(NUM_FILES + code - 1);
+        sampler->setPlaying(NUM_FILES + code - 1);
         // plays if recording exist
         if (debug_)
           printf("playing: %d\n", code);
       }
     } else {
-      recordingMode = false;
+      if (code == RECORDING_CHAR) {
+        recordingMode = !recordingMode; // toggle recording mode
+        sampler->stopAll();
+      } else
+        recordingMode = false;
+
       int index = decoder->getIndexFromCode(code);
       sampler->reset(index);
       sampler->setPlaying(index);
@@ -85,6 +99,7 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
       if (debug_)
         printf("received: %c\n", code);
     }
+  }
 
   float *nextFrame = sampler->getNextFrame();
 

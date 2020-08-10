@@ -31,7 +31,7 @@ private:
   Decoder *decoder;
   Sampler *sampler;
 
-  bool debug_, recordingMode;
+  bool debug_, recordingMode, currentlyRecording = false;
 
   void initPlayer(const char *in, const char *out);
   int portAudioCallback(const void *inputBuffer, void *outputBuffer,
