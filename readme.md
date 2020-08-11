@@ -1,5 +1,5 @@
 # WHAT IS THIS?
-This code was used for [this project](http://kj.jondell.com)
+<!--This code was used for [this project](http://kj.jondell.com)-->
 
 # HOW IS IT WORKING?
 
