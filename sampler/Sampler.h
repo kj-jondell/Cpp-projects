@@ -31,7 +31,7 @@ private:
   unsigned long recordingTime = 0;
 
 public:
-  Sampler(const char *fileName);
+  Sampler(const char *fileName, const char *recPath);
   virtual ~Sampler();
   float *getNextFrame();
   void startRecording(int index, unsigned long time);

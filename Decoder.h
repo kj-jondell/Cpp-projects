@@ -6,7 +6,6 @@
 #include <map>
 #include <vector>
 
-#define DBM_THRESHOLD 0.00005
 #define MAX_LOSS 5
 
 #define SEQUENCE_ENTRY_DELAY 15 // given in amt of buffers
@@ -40,6 +39,7 @@ private:
   ReceivedSymbol symbols[16];
   vector<ReceivedSymbol> currentSequence;
 
+  float dbmThreshold;
   bool debug_;
 
   ReceivedSymbol *getSymbol(char ch);
@@ -48,7 +48,7 @@ private:
   char parseSequence();
 
 public:
-  Decoder(float sampleRate, bool debug = false);
+  Decoder(float sampleRate, bool debug = false, float threshold = 0.0005);
   virtual ~Decoder();
   char getCode(float *in, int size, unsigned long time);
   int getIndexFromCode(char code);

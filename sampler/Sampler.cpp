@@ -1,6 +1,6 @@
 #include "Sampler.h"
 
-Sampler::Sampler(const char *fileName) {
+Sampler::Sampler(const char *fileName, const char *recordingFileName) {
   char buf[100];
   for (int i = 1; i <= NUM_FILES; i++) {
     sprintf(buf, fileName, i);
@@ -9,8 +9,7 @@ Sampler::Sampler(const char *fileName) {
   }
   for (int i = 1; i <= AMT_RECORDING_SLOTS; i++) {
     sprintf(buf,
-            "/Users/kj/Documents/projects/dtmf-decoder/recordings/"
-            "Recording%d.wav", // TODO make variable
+            recordingFileName, // TODO make variable
             i);
 
     Sample newSample = {

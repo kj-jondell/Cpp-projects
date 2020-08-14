@@ -1,7 +1,7 @@
 #include "Decoder.h"
 
-Decoder::Decoder(float sampleRate, bool debug)
-    : sampleRate_(sampleRate), debug_(debug) {
+Decoder::Decoder(float sampleRate, bool debug, float treshold)
+    : sampleRate_(sampleRate), debug_(debug), dbmThreshold(treshold) {
   for (int i = 0; i < 16; i++) {
     symbols[i].symbol = DECODE_TABLE[i / 4][i % 4];
     symbols[i].notReceivedCounter = MAX_LOSS;
@@ -11,7 +11,7 @@ Decoder::~Decoder(void) {}
 
 bool Decoder::isPeak(float freq, float *in, int size) {
   return GoertzelFilter<float>(freq, sampleRate_).process(in, size) >
-         DBM_THRESHOLD;
+         dbmThreshold;
 }
 
 /**

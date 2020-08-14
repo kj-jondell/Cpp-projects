@@ -1,10 +1,11 @@
 #include "Player.h"
 
 Player::Player(bool debug, const char *inputDeviceName,
-               const char *outputDeviceName, const char *filePath)
-    : debug_(debug) {
+               const char *outputDeviceName, const char *filePath,
+               const char *recordingPath, float threshold)
+    : debug_(debug), threshold_(threshold) {
   initPlayer(inputDeviceName, outputDeviceName);
-  sampler = new Sampler(filePath);
+  sampler = new Sampler(filePath, recordingPath);
 }
 
 Player::~Player(void) { stop(); }
@@ -45,7 +46,7 @@ void Player::initPlayer(const char *inputDeviceName,
  * Open port audio stream as definied in init
  */
 void Player::openStream() {
-  decoder = new Decoder(SAMPLE_RATE, debug_);
+  decoder = new Decoder(SAMPLE_RATE, debug_, threshold_);
   err =
       Pa_OpenStream(&stream, &inputParameters, &outputParameters, SAMPLE_RATE,
                     FRAMES_PER_BUFFER, paNoFlag, staticPortAudioCallback, this);

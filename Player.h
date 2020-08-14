@@ -31,6 +31,7 @@ private:
   Decoder *decoder;
   Sampler *sampler;
 
+  float threshold_;
   bool debug_, recordingMode, currentlyRecording = false;
 
   void initPlayer(const char *in, const char *out);
@@ -47,7 +48,8 @@ private:
 
 public:
   Player(bool debug = false, const char *in = "", const char *out = "",
-         const char *filePath = "");
+         const char *filePath = "", const char *recPath = "",
+         float threshold = 0.f);
   virtual ~Player();
 
   void start() { Pa_StartStream(stream); } // TODO implement error checking
