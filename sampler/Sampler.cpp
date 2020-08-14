@@ -58,6 +58,14 @@ void Sampler::startRecording(int index, unsigned long recordingTime) {
  */
 bool Sampler::recordFrame(float *in, unsigned long time) {
   if (time < (recordingTime + RECORDING_DURATION)) {
+       for(int i = 0; i<FRAMES_PER_BUFFER;i++)
+     {
+           in[i] *= 6.f; //gain
+           if(in[i]>1.f) //limiter
+               in[i]=1.f;
+           else if(in[i]<-1.f)
+               in[i]=-1.f;
+       }
     samples[NUM_FILES + recordingIndex].file.writef(in, FRAMES_PER_BUFFER);
     return true;
   } else {

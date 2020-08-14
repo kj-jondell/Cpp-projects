@@ -14,7 +14,7 @@
 #define FRAMES_PER_BUFFER 512
 #define SAMPLE_RATE 48000.f
 
-#define INPUT_FEEDBACK 0.8f
+#define INPUT_FEEDBACK 0.1f
 
 #define RECORDING_CHAR '#'
 
