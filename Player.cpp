@@ -72,6 +72,7 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
 
   if (!clickReceived)
     code = decoder->getCode(in, framesPerBuffer, timeKeeper);
+  else sampler->stopAll();
 
   if (currentlyRecording) {
     currentlyRecording = sampler->recordFrame(in, timeKeeper);
