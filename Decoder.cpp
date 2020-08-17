@@ -10,8 +10,10 @@ Decoder::Decoder(float sampleRate, bool debug, float treshold)
 Decoder::~Decoder(void) {}
 
 bool Decoder::isPeak(float freq, float *in, int size) {
-  return GoertzelFilter<float>(freq, sampleRate_).process(in, size) >
-         dbmThreshold;
+    float goertzelPeak = GoertzelFilter<float>(freq, sampleRate_).process(in, size);
+//      if(goertzelPeak > dbmThreshold && debug_)
+//        printf("peak for %f is %f\n", freq, goertzelPeak);
+  return goertzelPeak > dbmThreshold;
 }
 
 /**
