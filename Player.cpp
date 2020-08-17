@@ -66,7 +66,7 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
   char code = NULL;
 
   for (int i = 0; i < framesPerBuffer; i++)
-    if (abs(in[i]) >= 0.75) {
+    if (abs(in[i]) >= 0.25) {
       clickReceived = true;
     }
 
