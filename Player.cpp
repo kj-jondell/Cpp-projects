@@ -62,7 +62,16 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
                               const PaStreamCallbackTimeInfo *timeInfo,
                               PaStreamCallbackFlags statusFlags) {
   float *in = (float *)inputBuffer, *out = (float *)outputBuffer;
-  char code = decoder->getCode(in, framesPerBuffer, timeKeeper);
+  bool clickReceived = false;
+  char code = NULL;
+
+  for (int i = 0; i < framesPerBuffer; i++)
+    if (abs(in[i]) >= 0.75) {
+      clickReceived = true;
+    }
+
+  if (!clickReceived)
+    code = decoder->getCode(in, framesPerBuffer, timeKeeper);
 
   if (currentlyRecording) {
     currentlyRecording = sampler->recordFrame(in, timeKeeper);
