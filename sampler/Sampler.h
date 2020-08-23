@@ -9,7 +9,7 @@
 #include <vector>
 
 #define FRAMES_PER_BUFFER 512
-#define AMT_RECORDING_SLOTS 6
+#define AMT_RECORDING_SLOTS 7
 #define NUM_FILES 12
 #define RECORDING_DURATION 1000 // frames ca. 10s
 

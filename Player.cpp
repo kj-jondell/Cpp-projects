@@ -115,8 +115,15 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
   float *nextFrame = sampler->getNextFrame();
 
   for (int i = 0; i < framesPerBuffer; i++)
-    out[i] =
-        0.8f * nextFrame[i] + INPUT_FEEDBACK * in[i]; // feedback dtmf-tones
+  {
+          float nextSample = 0.8f * nextFrame[i] + INPUT_FEEDBACK * in[i]; // feedback dtmf-tones
+          if(nextSample>1.f)
+              nextSample = 1.f;
+          else if(nextSample<-1.f)
+              nextSample = -1.f;
+          out[i] = nextSample;
+  }
+        
 
   // else ;// play soundfile    ;
 
