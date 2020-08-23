@@ -9,7 +9,7 @@
 #define MAX_LOSS 5
 
 #define SEQUENCE_ENTRY_DELAY 15 // given in amt of buffers
-#define AMT_CODES 6
+#define AMT_CODES 7
 
 using namespace std;
 
@@ -33,7 +33,8 @@ private:
       {'7', 6}, {'8', 7}, {'9', 8}, {'*', 9}, {'0', 10}, {'#', 11}};
 
   const string COMPARE_CODES[AMT_CODES] = {"1706", "2305", "4713",
-                                           "19#2", "09*7", "1321"};
+                                           "19#2", "09*7", "1321",
+                                           "560#"};
 
   float sampleRate_;
   ReceivedSymbol symbols[16];
