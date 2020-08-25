@@ -10,7 +10,7 @@
 
 #define FRAMES_PER_BUFFER 512
 #define AMT_RECORDING_SLOTS 7
-#define NUM_FILES 12
+#define NUM_FILES 15
 #define RECORDING_DURATION 1000 // frames ca. 10s
 
 using namespace std;

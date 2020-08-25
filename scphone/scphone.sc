@@ -14,10 +14,10 @@ Server.default.options.device = "Soundflower (64ch)";
 Server.default.waitForBoot({
 
     var window; //GUI elements
-    var size = 50, rows = 3, margin = 10;
-    var symbols = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#", "M1", "M2", "M3", "M4", "M5", "M6"];
+    var size = 50, rows = 7, margin = 10;
+    var symbols = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#", "M1", "M2", "M3", "M4", "M5", "M6", "M7"];
 
-    var outVar = 1;
+    var outVar = 0;
 
     var sequences = [#["1", "7", "0", "6"], #["2", "3", "0", "5"], #["4", "7", "1", "3"], #["1", "9", "#", "2"], #["0", "9", "*", "7"], #["1", "3", "2", "1"]];
 

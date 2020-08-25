@@ -72,12 +72,14 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
 
   if (!clickReceived)
     code = decoder->getCode(in, framesPerBuffer, timeKeeper);
-  else sampler->stopAll();
+  else
+    sampler->stopAll();
 
   if (currentlyRecording) {
     currentlyRecording = sampler->recordFrame(in, timeKeeper);
     if (!currentlyRecording) {
       recordingMode = false;
+      code = 'C'; // play stop record sound
       if (debug_)
         printf("%s\n", "stopped recording!");
     }
@@ -89,9 +91,12 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
         // records
         if (debug_)
           printf("recording: %d\n", code);
+        code = 'B';                                  // play start record sound
+        int index = decoder->getIndexFromCode(code); // TODO quickfix...
+        sampler->reset(index);                       // TODO quickfix...
+        sampler->setPlaying(index);                  // TODO quickfix...
+
       } else {
-        sampler->reset(NUM_FILES + code - 1);
-        sampler->setPlaying(NUM_FILES + code - 1);
         // plays if recording exist
         if (debug_)
           printf("playing: %d\n", code);
@@ -99,31 +104,33 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
     } else {
       if (code == RECORDING_CHAR) {
         recordingMode = !recordingMode; // toggle recording mode
+        if (!recordingMode)
+          code = 'A'; // play stop sound
         sampler->stopAll();
       } else
         recordingMode = false;
-
-      int index = decoder->getIndexFromCode(code);
-      sampler->reset(index);
-      sampler->setPlaying(index);
-
       if (debug_)
         printf("received: %c\n", code);
     }
   }
 
+  if (!currentlyRecording && code) {
+    int index = decoder->getIndexFromCode(code);
+    sampler->reset(index);
+    sampler->setPlaying(index);
+  }
+
   float *nextFrame = sampler->getNextFrame();
 
-  for (int i = 0; i < framesPerBuffer; i++)
-  {
-          float nextSample = 0.8f * nextFrame[i] + INPUT_FEEDBACK * in[i]; // feedback dtmf-tones
-          if(nextSample>1.f)
-              nextSample = 1.f;
-          else if(nextSample<-1.f)
-              nextSample = -1.f;
-          out[i] = nextSample;
+  for (int i = 0; i < framesPerBuffer; i++) {
+    float nextSample = 0.8f * nextFrame[i] +
+                       1.f /*INPUT_FEEDBACK*/ * in[i]; // feedback dtmf-tones
+    if (nextSample > 1.f)                              // NORMALIZING
+      nextSample = 1.f;
+    else if (nextSample < -1.f)
+      nextSample = -1.f;
+    out[i] = nextSample;
   }
-        
 
   // else ;// play soundfile    ;
 
