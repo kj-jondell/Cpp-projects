@@ -123,9 +123,9 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
   float *nextFrame = sampler->getNextFrame();
 
   for (int i = 0; i < framesPerBuffer; i++) {
-    float nextSample = 0.8f * nextFrame[i] +
-                       1.f /*INPUT_FEEDBACK*/ * in[i]; // feedback dtmf-tones
-    if (nextSample > 1.f)                              // NORMALIZING
+    float nextSample =
+        0.8f * nextFrame[i] + INPUT_FEEDBACK * in[i]; // feedback dtmf-tones
+    if (nextSample > 1.f)                             // NORMALIZING
       nextSample = 1.f;
     else if (nextSample < -1.f)
       nextSample = -1.f;

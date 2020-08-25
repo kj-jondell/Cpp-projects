@@ -1,0 +1,4 @@
+Sample12 -> "Välj en knapp för att spela ***in*** ett meddelande"
+Sample13 -> "Välj en knapp för att spela ***upp*** ett meddelande"
+Sample14 -> Start-ton
+Sample15 -> Stopp-ton
