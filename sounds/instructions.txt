@@ -1,0 +1,5 @@
+1. Öppna FileZilla
+2. Fyll i: host = 192.168.0.103, username = pi, password = , port = 22 ELLER...
+2b. Klicka på pilen bredvid quickconnect och välj sftp://pi@192.168.0.103
+3. Välj "OK" om en dialog poppar up
+4. Navigera till mappen "DTMF-decoder -> sounds" och flytta över nya ljudfilen. Nya filen måste ha namnet Sample1-Sample11 där 1 motsvarar knappen 1, 2 motsvarar knappen 2 osv (10 är stjärna och 11 är 0).
