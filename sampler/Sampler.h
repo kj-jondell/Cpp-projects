@@ -17,7 +17,7 @@ using namespace std;
 
 typedef struct Sample {
   SndfileHandle file;
-  bool playing = false, looping = false, recording = false;
+  bool playing = false, looping = false, recording = false, exclusive = true;
   void togglePlaying() { playing = !playing; }
   void reset() { file.seek(0, 0); }
   void toggleRecording() { recording = !recording; }
@@ -36,13 +36,31 @@ public:
   float *getNextFrame();
   void startRecording(int index, unsigned long time);
   bool recordFrame(float *in, unsigned long time);
-  void stopAll() {
-    for (int i = 0; i < samples.size(); i++) {
-      samples[i].playing = false;
-      if (samples[i].file)
-        reset(i);
-    }
+  void onlyPlayExclusive(int index) {
+    if (samples[index].looping && samples[index].exclusive)
+      stopAllExcept(index);
+    else if (samples[index].exclusive)
+      stopAll();
+    else
+      for (int i = 0; i < samples.size(); i++)
+        if (samples[i].playing && samples[i].exclusive)
+          samples[i].playing = false;
   }
+  void stopRecordingMsg() {
+    if (samples[11].playing)
+      samples[11].playing = false;
+    if (samples[12].playing)
+      samples[12].playing = false;
+  }
+  void stopAllExcept(int index) {
+    for (int i = 0; i < samples.size(); i++)
+      if (i != index) {
+        samples[i].playing = false;
+        if (samples[i].file)
+          reset(i);
+      }
+  }
+  void stopAll() { stopAllExcept(-1); } // no exceptions
   void reset(int index) { samples[index].reset(); }
   void setPlaying(int index) {
     if (samples[index].looping)

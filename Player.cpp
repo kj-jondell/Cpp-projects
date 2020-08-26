@@ -107,8 +107,10 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
         if (!recordingMode)
           code = 'A'; // play stop sound
         sampler->stopAll();
-      } else
+      } else {
         recordingMode = false;
+        sampler->stopRecordingMsg();
+      }
       if (debug_)
         printf("received: %c\n", code);
     }
@@ -116,6 +118,7 @@ int Player::portAudioCallback(const void *inputBuffer, void *outputBuffer,
 
   if (!currentlyRecording && code) {
     int index = decoder->getIndexFromCode(code);
+    sampler->onlyPlayExclusive(index);
     sampler->reset(index);
     sampler->setPlaying(index);
   }

@@ -17,7 +17,13 @@ Sampler::Sampler(const char *fileName, const char *recordingFileName) {
                               1, 48000)}; // TODO variable samplerate
     samples.push_back(newSample);
   }
-  //samples[1].looping = true;
+  samples[2].looping = true;
+  samples[4].looping = true;
+  samples[6].looping = true;
+
+  samples[2].exclusive = false;
+  samples[4].exclusive = false;
+  samples[6].exclusive = false;
 }
 Sampler::~Sampler(void) {}
 
@@ -59,14 +65,13 @@ void Sampler::startRecording(int index, unsigned long recordingTime) {
  */
 bool Sampler::recordFrame(float *in, unsigned long time) {
   if (time < (recordingTime + RECORDING_DURATION)) {
-       for(int i = 0; i<FRAMES_PER_BUFFER;i++)
-     {
-           in[i] *= 8.f; //gain
-           if(in[i]>1.f) //limiter
-               in[i]=1.f;
-           else if(in[i]<-1.f)
-               in[i]=-1.f;
-       }
+    for (int i = 0; i < FRAMES_PER_BUFFER; i++) {
+      in[i] *= 8.f;    // gain
+      if (in[i] > 1.f) // limiter
+        in[i] = 1.f;
+      else if (in[i] < -1.f)
+        in[i] = -1.f;
+    }
     samples[NUM_FILES + recordingIndex].file.writef(in, FRAMES_PER_BUFFER);
     return true;
   } else {
