@@ -5,6 +5,7 @@
 #include <cstring>
 #include <iostream>
 #include <stdio.h>
+#include <tuple>
 #include <unistd.h>
 #include <vector>
 
@@ -17,7 +18,7 @@ using namespace std;
 
 typedef struct Sample {
   SndfileHandle file;
-  bool playing = false, looping = false, recording = false, exclusive = true;
+  bool playing = false, looping = false, recording = false;
   void togglePlaying() { playing = !playing; }
   void reset() { file.seek(0, 0); }
   void toggleRecording() { recording = !recording; }
@@ -26,6 +27,8 @@ typedef struct Sample {
 class Sampler {
 
 private:
+  const vector<vector<int>> NON_EXCLUSIVES = {{2, 4}, {6, 8}};
+
   vector<Sample> samples;
   int recordingIndex = 0;
   unsigned long recordingTime = 0;
@@ -37,14 +40,26 @@ public:
   void startRecording(int index, unsigned long time);
   bool recordFrame(float *in, unsigned long time);
   void onlyPlayExclusive(int index) {
-    if (samples[index].looping && samples[index].exclusive)
+    int currentLayer = -1; // is exclusive
+    for (int x = 0; x < NON_EXCLUSIVES.size(); x++)
+      for (int y = 0; y < NON_EXCLUSIVES[x].size(); y++)
+        if (NON_EXCLUSIVES[x][y] == index)
+          currentLayer = x; // not exclusive and set layer
+
+    if (samples[index].looping && currentLayer == -1)
       stopAllExcept(index);
-    else if (samples[index].exclusive)
+    else if (currentLayer == -1)
       stopAll();
     else
-      for (int i = 0; i < samples.size(); i++)
-        if (samples[i].playing && samples[i].exclusive)
-          samples[i].playing = false;
+      for (int i = 0; i < samples.size(); i++) {
+        bool shouldPlay = false;
+        if (samples[i].playing) {
+          for (int y = 0; y < NON_EXCLUSIVES[currentLayer].size(); y++)
+            if (i == NON_EXCLUSIVES[currentLayer][y])
+              shouldPlay = true;
+          samples[i].playing = shouldPlay; // stop if not in non-exclusive layer
+        }
+      }
   }
   void stopRecordingMsg() {
     if (samples[11].playing)
