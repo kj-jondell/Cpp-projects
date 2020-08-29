@@ -20,6 +20,7 @@ Sampler::Sampler(const char *fileName, const char *recordingFileName) {
   samples[2].looping = true;
   samples[4].looping = true;
   samples[6].looping = true;
+  samples[8].looping = true;
 }
 Sampler::~Sampler(void) {}
 
