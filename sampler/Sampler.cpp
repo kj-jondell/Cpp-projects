@@ -17,9 +17,11 @@ Sampler::Sampler(const char *fileName, const char *recordingFileName) {
                               1, 48000)}; // TODO variable samplerate
     samples.push_back(newSample);
   }
+  samples[1].looping = true;
   samples[2].looping = true;
   samples[4].looping = true;
   samples[6].looping = true;
+  samples[7].looping = true;
   samples[8].looping = true;
 }
 Sampler::~Sampler(void) {}
