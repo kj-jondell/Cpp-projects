@@ -9,7 +9,7 @@ This code was used for implementing an interactive phone for the exhibition *MAM
 </div>
 
 # HOW IS IT WORKING?
-The code is running on a Raspberry Pi Zero W and connects to the phone through a cheap USB soundcard. The phone sends it's DTMF encoded tones to the Raspberry, which are decoded and responds accordingly (e.g. by playing back a soundfile). Sequences (i.e. *phone numbers*) can be entered, to extend the keypad and to allow recording messages (the phone has a quick-call function). 
+The code is running on a Raspberry Pi Zero W and connects to the phone through a cheap USB soundcard. The phone sends it's DTMF encoded tones to the Raspberry, which are decoded and responds accordingly (e.g. by playing back a soundfile). Sequences (i.e. *phone numbers*) can be entered, to extend the keypad and to allow recording messages (the phone has a quick-call function, which is used for this). 
 
 ## DTMF (Dual Tone Multi Frequency)
 The DTMF decoder works by using a Goertzel algorithm to detect the frequency compontents of the incoming signals. As the phone receiver and keypad tones uses the same signal line, the trigger threshold must be calibrated so that DTMF tones are not detected from other sounds (e.g. by speaking in the receiver).
