@@ -3,9 +3,9 @@ This code was used for implementing an interactive phone for the exhibition *MAM
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/30523857/97778944-1314f500-1b7b-11eb-8fb3-c6acf876e76f.jpg" width="360" height="450" />
-<!--
-Picture from the exhibition, Botkyrka konsthall.
--->
+<p>
+*Picture from the exhibition, Botkyrka konsthall.*
+</p>
 </div>
 
 # HOW IS IT WORKING?
